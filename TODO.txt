@@ -1,0 +1,44 @@
+1 - criação de tasks
+2 - listagem de todas as tasks
+3 - Atualização de uma task pelo id
+4 - remover uma task pelo id
+5 - marcar pelo id uma task como completa
+6 - importacao de tasks em massa por um arquivo CSV
+
+Rotas e regras de negocio
+
+id - identificador unico de cada task
+title - Titulo da task
+description - descricao detalhasda da task
+complete_at
+created_at
+updated_at
+
+rotas:
+post /task
+get /tasks
+put /task/:id
+delete /task/:id
+patch /task:id/complete
+
+{
+    title,
+    description,
+    complete_at,
+    created_at,
+    updated_at
+}
+
+
+	{
+		"title": "IsCompleted",
+		"description": "realizar metodos para marcar tasks como concluida."		
+	},
+	{
+		"title": "CRUD",
+		"description": "Realizar todos os TODOS do desafio 01"		
+	},
+	{
+		"title": "Desafio 01",
+		"description": "Task para completar primeiro desafio de node js da trilha ignite"		
+	}
