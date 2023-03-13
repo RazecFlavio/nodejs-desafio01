@@ -24,16 +24,18 @@ export class Database {
         this.#persist();
     }
 
-    select() { return this.#database; }
+    select(id) {
+        if (id)
+            return this.#database.find(task => task.id === id);
+        return this.#database;
+    }
 
     update(id, title, description) {
         let index = this.#database.findIndex(task => { return task.id === id })
-        console.log('idnex', index);
         if (index != -1) {
-            console.log('item', this.#database[index])
             this.#database[index] = {
                 ...this.#database[index],
-                title, description
+                title, description, updated_at: new Date()
             };
             this.#persist();
         }
@@ -45,11 +47,13 @@ export class Database {
     }
 
     completed(id) {
+        let date = new Date();
         let index = this.#database.findIndex(task => { return task.id === id })
         if (index != -1) {
             this.#database[index] = {
                 ...this.#database[index],
-                completed_at: new Date()
+                updated_at: date,
+                completed_at: date
             }
             this.#persist();
         }
